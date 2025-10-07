@@ -2,9 +2,6 @@ package br.com.jorgehauck.pedidos.notificacao.entities;
 
 import br.com.jorgehauck.pedidos.notificacao.entities.enums.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,9 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Pedido {
     private UUID id = UUID.randomUUID();
     private String cliente;
@@ -24,4 +18,72 @@ public class Pedido {
     private Status status;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime dataHora = LocalDateTime.now();
+
+    public Pedido() {}
+    public Pedido(UUID id, String cliente, BigDecimal valorTotal, String emailNotificacao) {
+        this.id = id;
+        this.cliente = cliente;
+        this.valorTotal = valorTotal;
+        this.emailNotificacao = emailNotificacao;
+    }
+    public UUID getId() {
+        return id;
+    }
+    public void setId(UUID id) {
+        this.id = id;
+    }
+    public String getCliente() {
+        return cliente;
+    }
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+    public List<ItemPedido> getItensPedido() {
+        return itensPedido;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public String getEmailNotificacao() {
+        return emailNotificacao;
+    }
+
+    public void setEmailNotificacao(String emailNotificacao) {
+        this.emailNotificacao = emailNotificacao;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
+
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "id=" + id +
+                ", cliente='" + cliente + '\'' +
+                ", itensPedido=" + itensPedido +
+                ", valorTotal=" + valorTotal +
+                ", emailNotificacao='" + emailNotificacao + '\'' +
+                ", status=" + status +
+                ", dataHora=" + dataHora +
+                '}';
+    }
 }
