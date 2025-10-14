@@ -42,11 +42,9 @@ public class ItemPedido {
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
-
     public Pedido getPedido() {
         return pedido;
     }
-
     public void setPedido(Pedido pedido) {
         this.pedido = pedido;
     }
